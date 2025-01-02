@@ -1,0 +1,11 @@
+Spring:
+  datasource:
+    url: jdbc:mysql://localhost:3307/food_db
+    username : admin
+    password: rlaghdus98
+  jpa:
+    show-sql: true
+
+jwt :
+  secret: hfgh454ghncb532hcgn6fjgvn6ftcg3dsx5itujyht6nhjiukhieurkfhweiruky2mhjh554
+

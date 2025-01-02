@@ -1,0 +1,13 @@
+Spring:
+  datasource:
+    url: jdbc:mysql://hi-db.c5oq8k0ka3uy.ap-northeast-2.rds.amazonaws.com:3306/food_db
+    username : admin
+    password: rlaghdus98
+  jpa:
+    show-sql: true
+
+jwt :
+  secret: hfgh454ghncb532hcgn6fjgvn6ftcg3dsx5itujyht6nhjiukhieurkfhweiruky2mhjh554
+
+server:
+  port: 80

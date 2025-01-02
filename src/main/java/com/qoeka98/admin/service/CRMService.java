@@ -4,6 +4,7 @@ import com.qoeka98.admin.config.JwtConfig;
 import com.qoeka98.admin.dao.CRMDAO;
 import com.qoeka98.admin.dto.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -37,5 +38,23 @@ JwtConfig jwtConfig;
 
     }
 
+ public  PopularListResponse getTop(String token, String category , Integer minReview) {
+     Long userId = Long.parseLong(jwtConfig.getTokenClaims(token.substring(7)).getSubject());
+     if (category == null && minReview == null) {
+               List<TopResponse> topResponseList = crmDAO.getTop();
+               return new PopularListResponse(topResponseList);
+           } else if (category != null && minReview == null) {
+               List<TopResponse>  topResponseList = crmDAO.getTop(category);
+               return new PopularListResponse(topResponseList);
+           } else if (category == null && minReview != null) {
+               List<TopResponse>   topResponseList = crmDAO.getTop(minReview);
+               return new PopularListResponse(topResponseList);
+           } else {
+               List<TopResponse>   topResponseList = crmDAO.getTop(category, minReview);
+               return new PopularListResponse(topResponseList);
+           }
 
-}
+ }
+
+
+ }

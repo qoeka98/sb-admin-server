@@ -1,5 +1,6 @@
 package com.qoeka98.admin.controller;
 
+import com.qoeka98.admin.dto.PopularListResponse;
 import com.qoeka98.admin.dto.StatResponse;
 import com.qoeka98.admin.dto.ReviewerListResponse;
 import com.qoeka98.admin.service.CRMService;
@@ -35,4 +36,14 @@ public ResponseEntity<ReviewerListResponse>    getTopReviewers(@RequestHeader("A
         return ResponseEntity.status(200).body(statResponse);
     }
 
-}
+    @GetMapping("/api/v1/admin/crm/restaurants/popular")
+   public ResponseEntity<PopularListResponse> toprestaurants(@RequestHeader ("Authorization") String token,
+                                                             @RequestParam(required = false) String category
+            , @RequestParam(required = false) Integer minReview){
+     PopularListResponse allTopResponse = crmService.getTop(token, category, minReview);
+     return ResponseEntity.status(200).body(allTopResponse);
+    }
+    }
+
+
+
